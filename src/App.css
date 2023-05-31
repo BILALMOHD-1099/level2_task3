@@ -1,38 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(120deg, #8758ff, #732cff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-size: 1.75rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.TodoWrapper {
+  background: #1A1A40;
+  margin-top: 5rem;
+  padding: 2rem;
+  border-radius: 5px;
+  animation: slideIn 0.5s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes slideIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(-20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
+.TodoForm {
+  width: 100%;
+}
+
+.todo-input {
+  outline: none;
+  background: none;
+  border: 1px solid #8758ff;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 300px;
+  color: #fff;
+  border-radius: 5px;
+  transform: skew(-5deg);
+}
+
+.todo-input::placeholder {
+  color: #ffffff4d;
+}
+
+.todo-btn {
+  background: #8758ff;
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+  transform: translateX(0);
+}
+
+.todo-btn:hover {
+  background: #a76bff;
+  transform: translateX(5px);
+}
+
+.Todo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  transform: translateY(0);
+}
+
+.Todo:nth-child(odd) {
+  background-color: #8758ff; /* Set a background color for odd tasks */
+}
+
+.Todo:nth-child(even) {
+  background-color: #a76bff; /* Set a background color for even tasks */
+}
+
+.Todo:hover {
+  background: #a76bff;
+  transform: translateY(-3px) rotate(-2deg);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.Todo:hover .fa-trash {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
+}
+
+.Todo.enter {
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideInTask 0.3s ease forwards;
+}
+
+@keyframes slideInTask {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.Todo.exit {
+  opacity: 1;
+  transform: translateY(0);
+  animation: slideOutTask 0.3s ease forwards;
+}
+
+@keyframes slideOutTask {
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+.completed {
+  color: #c5aeff;
+  text-decoration: line-through;
+}
+
+.Todo .update-btn {
+  margin-right: 0.5rem;
+}
+
+.Todo .fa-trash {
+  margin-left: 0.5rem;
+}
+
+
+
